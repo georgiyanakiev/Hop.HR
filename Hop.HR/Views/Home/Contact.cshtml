@@ -25,6 +25,12 @@
             accViewModel.Accounts.pop();
 
         })
+
+        $("ddlAccounts").change(function() {
+            var selInd = document.getElementById("ddlAccounts").selectedIndex;
+               accViewModel.SelectedAccountIndex(selInd);
+
+        })
     })
     </script>
 
@@ -39,22 +45,17 @@
     <h3>@ViewBag.Message</h3>
 
         Account ID's'
-    <select data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
+         <select id="ddlAccounts" data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
         Total Number of Accounts:<span data-bind="text:Accounts().length"></span>
 
     <hr />
-    <h2>Account Details</h2>
-    Id:<span data-bind="text: Id"></span><br />
-    Name:<span data-bind="text: Name"></span><br />
-    Balance:<span data-bind="text: Balance"></span><br />
+    <h3>Selected Account Details</h3>
+    Id:<span data-bind="text: Accounts()[SelectedAccountIndex()].Id"></span><br />
+    Name:<span data-bind="text: Accounts()[SelectedAccountIndex()].Name"></span><br />
+    Balance:<span data-bind="text: Accounts()[SelectedAccountIndex()].Balance"></span><br />
     <input type="button" id="btnShowDetails" value="ShowDetails" />
 
-    <hr />
-    Amount:<input type="text" id="txtAmount" />
-    <input type="button" id="btnDeposit" value="Deposit" />
-
-    <hr />
-    New Balance:<input type="text" data-bind="value:Balance" />
+   
 
     <hr />
     New Id:<input type="text" id="txtNewId" value="" /><br />
@@ -81,6 +82,7 @@
     var a2 = new Account(2,"A2",20000)
     var a3 = new Account(3,"A3",30000)
     this.Accounts = ko.observableArray([a1,a2,a3])
+    this.SelectedAccountIndex = ko.observable(0)
     }
 
     var acc = new Account(1, "A2", 10000);
