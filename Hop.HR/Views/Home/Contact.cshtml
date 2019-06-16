@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
     @Scripts.Render("~/bundles/EmployeeViewModel");
-    <script src="~/Scripts/jquery-3.3.1.intellisense.js"></script>
-    <script src="~/Scripts/knockout-3.5.0.js"></script>
+    <script src="~/Scripts/knockout-3.5.0.debug.js"></script>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/modernizr-2.8.3.js"></script>
     <script>
      $(document).ready(function () {
          $("btnShowDetails").click(function() {
@@ -15,10 +16,13 @@
         $("#btnDeposit").click(function () {
         accViewModel.Balance(accViewModel.Balance() + Number($("#txtAmount").val()));
         })
-            var acc = new Accout($("#txtNewId").val(),$("#txtNewName").val(),$("#txtNewBalance").val())
-            accViewModel.Account.push(acc)
-            alert(accViewModel.Accounts().length)
-
+        $("#btnAddAccount").click(function () {
+        var acc = new Account($("#txtNewId").val(),$("#txtNewName").val(),$("#txtNewBalance").val())
+        accViewModel.Accounts.push(acc);
+        alert(accViewModel.Accounts().length)
+        })
+        $("#btnPopAccount").click(function () {
+            accViewModel.Accounts.pop();
 
         })
     })
@@ -34,8 +38,9 @@
     <h2>@ViewBag.Title</h2>
     <h3>@ViewBag.Message</h3>
 
-    Account Id's:
+        Account ID's'
     <select data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
+        Total Number of Accounts:<span data-bind="text:Accounts().length"></span>
 
     <hr />
     <h2>Account Details</h2>
@@ -52,10 +57,11 @@
     New Balance:<input type="text" data-bind="value:Balance" />
 
     <hr />
-    New Id:<input type="text" id="txtNewId" value="" /><br/>
+    New Id:<input type="text" id="txtNewId" value="" /><br />
     New Name:<input type="text" id="txtNewName" value="" /><br />
     New Balance:<input type="text" id="txtNewBalance" value="" /><br />
-    <input type="button" id="btnAddAccount" value="Add Account"/>
+    <input type="button" id="btnAddAccount" value="Add Account" />
+    <input type="button" id="btnPopAccount" value="Pop Account" />
 
 
     <script>
