@@ -42,7 +42,7 @@ namespace Hop.HR.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Your Account ID";
 
             return View();
         }
