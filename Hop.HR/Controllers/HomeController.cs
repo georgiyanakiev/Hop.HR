@@ -19,7 +19,12 @@ namespace Hop.HR.Controllers
         {
             _db.Employees.Add(model);
             _db.SaveChanges();
-            return Json("Login Successful!");
+            return Json("Successful!");
+        }
+        public JsonResult GetEmployee()
+        {
+            var data = _db.Employees.ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
         }
 
 
