@@ -11,6 +11,8 @@ function EmployeeViewModel() {
     _this.emailAddress = ko.observable();
     _this.phoneNumber = ko.observable();
 
+    
+
 
     _this.addNewEmployee = function () { 
         
@@ -29,7 +31,14 @@ function EmployeeViewModel() {
             _this.emailAddress(null);
             _this.phoneNumber(null);
             _this.login(message);
+
+       
         });
     }
 }
+ 
 
+        
+        
+
+    ko.applyBindings(accViewModel);

@@ -21,7 +21,7 @@
         accViewModel.Accounts.push(acc);
         alert(accViewModel.Accounts().length)
         })
-        $("#btnPopAccount").click(function () {
+        $("#btnDeleteAccount").click(function () {
             accViewModel.Accounts.pop();
 
         })
@@ -44,9 +44,9 @@
     <h2>@ViewBag.Title</h2>
     <h3>@ViewBag.Message</h3>
 
-        Account ID's'
-         <select id="ddlAccounts" data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
-        Total Number of Accounts:<span data-bind="text:Accounts().length"></span>
+    Account ID's'
+    <select id="ddlAccounts" data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
+    Total Number of Accounts:<span data-bind="text:Accounts().length"></span>
 
     <hr />
     <h3>Selected Account Details</h3>
@@ -55,18 +55,17 @@
     Balance:<span data-bind="text: Accounts()[SelectedAccountIndex()].Balance"></span><br />
     <input type="button" id="btnShowDetails" value="ShowDetails" />
 
-   
+
 
     <hr />
     New Id:<input type="text" id="txtNewId" value="" /><br />
     New Name:<input type="text" id="txtNewName" value="" /><br />
     New Balance:<input type="text" id="txtNewBalance" value="" /><br />
     <input type="button" id="btnAddAccount" value="Add Account" />
-    <input type="button" id="btnPopAccount" value="Pop Account" />
+    <input type="button" id="btnDeleteAccount" value="Delete Account" />
 
 
-    <script>
-    //this is model object
+    <script>//this is model object
     function Account(id,name,balance) {
     this.Id =id;
     this.Name = name;
@@ -78,9 +77,9 @@
     this.Id = acc.Id;
     this.Name = acc.Name;
     this.Balance = ko.observable(acc.Balance);
-    var a1 = new Account(1,"A1",10000)
-    var a2 = new Account(2,"A2",20000)
-    var a3 = new Account(3,"A3",30000)
+    var a1 = new Account(1,"Personal Account",10000)
+    var a2 = new Account(2,"Business Account",20000)
+    var a3 = new Account(3,"Account",30000)
     this.Accounts = ko.observableArray([a1,a2,a3])
     this.SelectedAccountIndex = ko.observable(0)
     }
@@ -88,9 +87,11 @@
     var acc = new Account(1, "A2", 10000);
     var accViewModel = new AccountViewModel(acc);
 
-    ko.applyBindings(accViewModel);
-    </script>
+    ko.applyBindings(accViewModel);</script>
 </body>
-    </html>
+</html>
 
-    
+
+
+
+
