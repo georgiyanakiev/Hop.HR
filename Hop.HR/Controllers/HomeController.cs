@@ -22,7 +22,12 @@ namespace Hop.HR.Controllers
             return Json("Successful!");
         }
 
-
+        public JsonResult RemoveEmployee (Employee model)
+        {
+            _db.Employees.Remove(model);
+            _db.SaveChanges();
+            return Json("Removed Successsful!");
+        }
 
          public JsonResult GetEmployees()
                 {
