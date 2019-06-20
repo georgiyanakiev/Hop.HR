@@ -22,6 +22,8 @@ namespace Hop.HR.Controllers
             return Json("Successful!");
         }
 
+
+
          public JsonResult GetEmployees()
                 {
 

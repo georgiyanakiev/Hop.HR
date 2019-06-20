@@ -1,6 +1,4 @@
 ﻿
-
-
 function EmployeeViewModel() { 
     var _this = this;
     
@@ -11,11 +9,14 @@ function EmployeeViewModel() {
     _this.emailAddress = ko.observable();
     _this.phoneNumber = ko.observable();
     _this.employees = ko.observableArray();
-
     
-
-
-    _this.addNewEmployee = function () { 
+        function Phone(code,number) { 
+            var self = this; 
+            self.CountryCode = ko.observable(code);
+            self.PhoneNumber = ko.observable(number);
+        }
+       
+         _this.addNewEmployee = function () { 
         
         var data = { 
             firstName: _this.firstName(),
@@ -24,32 +25,32 @@ function EmployeeViewModel() {
             phoneNumber: _this.phoneNumber()
              
         };
-        $.post("/Home/AddNewEmployee", data) 
-            
+        
+        $.post("/Home/AddNewEmployee", data)             
         .done(function (message) { 
             _this.firstName(null);
             _this.lastName(null); 
             _this.emailAddress(null);
             _this.phoneNumber(null);
             _this.login(message);
-            
-           _this.displayData = function()
-        {
+            });
+}
 
-        $.getJSON("/Home/GetEmployees")
+        _this.displayData = function () {
 
+            $.getJSON("/Home/GetEmployees")
             .done(function(results) {
                 _this.employees(results);
+  
+            
 
+                });
+             }
             }
-       
-        });
-    }
-}
  
 
         
         
 
-    ko.applyBindings(accViewModel);
+    
 
