@@ -9,7 +9,7 @@
     <script src="~/Scripts/jquery-3.3.1.js"></script>
     <script src="~/Scripts/modernizr-2.8.3.js"></script>
     <script>
-     $(document).ready(function () {
+        $(document).ready(function () {
          $("btnShowDetails").click(function() {
         alert(accViewModel.Id + " " + accViewModel.Balance())
         })
@@ -28,7 +28,7 @@
 
         $("#ddlAccounts").change(function() {
             var selInd = document.getElementById("ddlAccounts").selectedIndex;
-               accViewModel.SelectedAccountIndex(selInd);
+            accViewModel.SelectedAccountIndex(selInd);
 
         })
     })
@@ -45,7 +45,7 @@
     <h3>@ViewBag.Message</h3>
 
     Account ID's'
-    <select id="ddlAccounts" data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select>
+    <select id="ddlAccounts" data-bind="options:Accounts,optionsText:'Name',optionsValue:'Id'"></select><br />
     Total Number of Accounts:<span data-bind="text:Accounts().length"></span>
 
     <hr />
