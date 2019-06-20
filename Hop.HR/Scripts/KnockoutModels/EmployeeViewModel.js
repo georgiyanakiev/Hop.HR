@@ -10,6 +10,7 @@ function EmployeeViewModel() {
     _this.login = ko.observable();
     _this.emailAddress = ko.observable();
     _this.phoneNumber = ko.observable();
+    _this.employees = ko.observableArray();
 
     
 
@@ -31,7 +32,16 @@ function EmployeeViewModel() {
             _this.emailAddress(null);
             _this.phoneNumber(null);
             _this.login(message);
+            
+           _this.displayData = function()
+        {
 
+        $.getJSON("/Home/GetEmployees")
+
+            .done(function(results) {
+                _this.employees(results);
+
+            }
        
         });
     }
@@ -42,3 +52,4 @@ function EmployeeViewModel() {
         
 
     ko.applyBindings(accViewModel);
+

@@ -43,6 +43,14 @@
 
         <button class="btn btn-secondary" data-bind="click: loadData">Load Data</button>
 
+        <button class="btn btn-primary" data-bind="click: removeTask">Fetch</button>
+
+        <ul class="list" data-bind="foreach: employees, visible: employees().length > 0">
+            <li class="big" data-bind="text:FirstName"></li>
+            <li data-bind="text:LastName"></li>
+            <li data-bind="text:Email"></li>
+        </ul>
+
         <h1 type="text" data-bind="text: login"></h1>
     </form>
 </div>

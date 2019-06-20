@@ -21,14 +21,17 @@ namespace Hop.HR.Controllers
             _db.SaveChanges();
             return Json("Successful!");
         }
-        public JsonResult GetEmployee()
-        {
-            var data = _db.Employees.ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
-        }
+
+         public JsonResult GetEmployees()
+                {
+
+                    var data = _db.Employees.ToList();
+
+                    return Json(data, JsonRequestBehavior.AllowGet);
+                }
 
 
-        public ActionResult Index()
+                public ActionResult Index()
         {
             return View();
         }
@@ -48,3 +51,7 @@ namespace Hop.HR.Controllers
         }
     }
 }
+
+
+
+    
