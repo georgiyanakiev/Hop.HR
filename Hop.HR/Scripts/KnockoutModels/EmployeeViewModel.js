@@ -10,6 +10,7 @@ function EmployeeViewModel() {
     _this.phoneNumber = ko.observable();
     _this.employees = ko.observableArray();
     
+    
         function Phone(code,number) { 
             var self = this; 
             self.CountryCode = ko.observable(code);
