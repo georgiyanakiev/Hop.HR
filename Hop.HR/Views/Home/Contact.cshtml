@@ -11,13 +11,13 @@
     <script>
      $(document).ready(function () {
          $("btnShowDetails").click(function() {
-        alert(accViewModel.Id + " " + accViewModel.Balance())
+        alert(accViewModel.Id + " " + accViewModel.Salary())
         })
         $("#btnDeposit").click(function () {
-        accViewModel.Balance(accViewModel.Balance() + Number($("#txtAmount").val()));
+        accViewModel.Salary(accViewModel.Salary() + Number($("#txtAmount").val()));
         })
         $("#btnAddAccount").click(function () {
-        var acc = new Account($("#txtNewId").val(),$("#txtNewName").val(),$("#txtNewBalance").val())
+        var acc = new Account($("#txtNewId").val(),$("#txtNewName").val(),$("#txtSalary").val())
         accViewModel.Accounts.push(acc);
         alert(accViewModel.Accounts().length)
         })
@@ -52,7 +52,7 @@
     <h3>Selected Account Details</h3>
     Id:<span data-bind="text: Accounts()[SelectedAccountIndex()].Id"></span><br />
     Name:<span data-bind="text: Accounts()[SelectedAccountIndex()].Name"></span><br />
-    Balance:<span data-bind="text: Accounts()[SelectedAccountIndex()].Balance"></span><br />
+    Salary:<span data-bind="text: Accounts()[SelectedAccountIndex()].Salary"></span><br />
     <input type="button" id="btnShowDetails" value="ShowDetails" />
 
 
@@ -60,27 +60,27 @@
     <hr />
     New Id:<input type="text" id="txtNewId" value="" /><br />
     New Name:<input type="text" id="txtNewName" value="" /><br />
-    New Balance:<input type="text" id="txtNewBalance" value="" /><br />
+    New Salary:<input type="text" id="txtSalary" value="" /><br />
     <input type="button" id="btnAddAccount" value="Add Account" />
     <input type="button" id="btnDeleteAccount" value="Delete Account" />
 
 
     <script>
     //this is model object
-    function Account(id,name,balance) {
+    function Account(id,name,salary) {
     this.Id =id;
     this.Name = name;
-    this.Balance = balance;
+    this.Salary = salary;
     }
 
     //this is View Model
     function AccountViewModel(acc) {
     this.Id = acc.Id;
     this.Name = acc.Name;
-    this.Balance = ko.observable(acc.Balance);
+    this.Salary = ko.observable(acc.Salary);
     var a1 = new Account(1,"Personal Account",10000)
     var a2 = new Account(2,"Business Account",20000)
-    var a3 = new Account(3,"Account",30000)
+    var a3 = new Account(3,"Temporary Account",30000)
     this.Accounts = ko.observableArray([a1,a2,a3])
     this.SelectedAccountIndex = ko.observable(0)
     }

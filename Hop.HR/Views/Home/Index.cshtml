@@ -3,6 +3,7 @@
     
 }
 
+
 <div class="well">
 
     <form>
@@ -39,11 +40,11 @@
 
         </div>
 
-        <button class="btn btn-primary" data-bind="click: addNewEmployee">Add</button>
+        <button class="btn btn-primary" data-bind="click: addNewEmployee">Add New Employee</button>
 
         
 
-        <button class="btn btn-primary" data-bind="click: displayData">View</button>
+        <button class="btn btn-primary" data-bind="click: displayData">View Employee</button>
 
         <ul class="list" data-bind="foreach: employees, visible: employees().length > 0">
             <li class="big" data-bind="text:FirstName"></li>
