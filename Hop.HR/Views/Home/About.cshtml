@@ -9,7 +9,7 @@
         <tr>
             <th>First Name</th>
             <th>Last name</th>
-            <th>Phone numbers</th>
+            
         </tr>
         <tbody data-bind="foreach: contacts">
             <tr>
@@ -17,8 +17,12 @@
                     <input data-bind='value: firstName' />
                     <div><a href='#' data-bind='click: $root.removeContact'>Delete</a></div>
                 </td>
-                <td><input data-bind='value: lastName' /></td>
+                
                 <td>
+                    <input data-bind='value: lastName' />
+                    <div><a href='#' data-bind='click: $root.removeContact'>Delete</a></div>
+                </td>
+               
                     <table>
                         <tbody data-bind="foreach: phones">
                             <tr>
